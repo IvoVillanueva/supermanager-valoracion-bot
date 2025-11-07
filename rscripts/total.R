@@ -157,4 +157,4 @@ en_contra_df <- map_df(team, team_df) %>%
 
 
 # Guardar CSV
-# write_csv(en_contra_df, here::here("2026/playByplay2026/valEnContra/encontra.csv"))
+write_csv(en_contra_df, here::here("data/encontra_total.csv"))
