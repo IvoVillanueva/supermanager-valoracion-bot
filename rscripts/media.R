@@ -1,7 +1,7 @@
 source("rscripts/helpers.R")
 
 # Create data directory if it doesn't exist
-#if (!dir.exists("data")) dir.create("data")
+if (!dir.exists("data")) dir.create("data")
 
 
 # medias
@@ -150,4 +150,4 @@ encontra_df_mean <- map_df(team_mean, team_df_mean) %>%
   ) %>%
   select(-ends_with(".x"), -ends_with(".y"))
 
-# write_csv(encontra_df_mean, "data/valEnContra/encontramean.csv"))
+write_csv(encontra_df_mean, "data/encontramean.csv"))
