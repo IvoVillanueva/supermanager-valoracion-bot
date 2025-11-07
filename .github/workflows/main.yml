@@ -2,7 +2,7 @@
 
 
 
-name: Extraer Boxscore ACB 2025-26
+name: Calcular Valoraciones Por Posición
 
 on:
   workflow_dispatch:
@@ -15,14 +15,10 @@ on:
 
 jobs:
   Get-Boxscore-ACB:
-    name: Actualizar Boxscore ACB 
+    name: Actualizar Valoraciones Por Posición
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      ACB_KEY: ${{ secrets.ACB_KEY }}
-      ACB_TOKEN: ${{ secrets.ACB_TOKEN }}
-      API_URL: ${{ secrets.API_URL }}
-      PBP: ${{ secrets.PBP }}
     steps:
       - uses: actions/checkout@v3  
       
@@ -48,7 +44,7 @@ jobs:
           packages: tidyverse, janitor
           
       - name: Run R script
-        run: Rscript rscripts/main_acb_update.R
+        run: Rscript rscripts/main_valoraciones_update.R
         shell: bash
 
       - name: Commit changes in data folder
@@ -56,7 +52,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add data/*.csv
-          git diff --cached --quiet || git commit -m "Auto-update: Boxscore ACB 2025-26"
+          git diff --cached --quiet || git commit -m "Auto-update: Calcular Valoraciones Por Posición"
         shell: bash
 
       - name: Push changes
