@@ -7,13 +7,11 @@ name: Extraer Boxscore ACB 2025-26
 on:
   workflow_dispatch:
   schedule:
-    # OCTUBRE a MARZO (UTC+1)
-    - cron: '30 18-22 * 10-12,1-3 6'  # Sábados
-    - cron: '30 12-22 * 10-12,1-3 0'  # Domingos
+  # OCTUBRE a MARZO (UTC+1)
+  - cron: '0 5 * 10-12,1-3 1'  # Lunes 06:00 hora Madrid
 
-    # ABRIL a SEPTIEMBRE (UTC+2)
-    - cron: '30 17-21 * 4-9 6'  # Sábados
-    - cron: '30 11-21 * 4-9 0'  # Domingos
+  # ABRIL a SEPTIEMBRE (UTC+2)
+  - cron: '0 4 * 4-9 1'        # Lunes 06:00 hora Madrid
 
 jobs:
   Get-Boxscore-ACB:
@@ -47,10 +45,10 @@ jobs:
       - name: Install CRAN packages
         uses: r-lib/actions/setup-r-dependencies@v2
         with: 
-          packages: tidyverse, httr, janitor, jsonlite, lubridate
+          packages: tidyverse, janitor
           
       - name: Run R script
-        run: Rscript scripts/main_acb_update.R
+        run: Rscript rscripts/main_acb_update.R
         shell: bash
 
       - name: Commit changes in data folder
