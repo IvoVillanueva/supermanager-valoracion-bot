@@ -1,10 +1,7 @@
 source("rscripts/helpers.R")
 
-
-
 # Create data directory if it doesn't exist
 if (!dir.exists("data")) dir.create("data")
-
 
 # Estadísticas en contra
 stats_encontra <- stats_boxscores %>%
@@ -60,8 +57,6 @@ stats_encontra <- stats_boxscores %>%
 
 
 # Crear DataFrame con posiciones como columnas
-
-
 stats_encontra_union <- stats_encontra %>%
   filter(position == "base") %>%
   rename_with(
