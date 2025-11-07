@@ -150,4 +150,4 @@ encontra_df_mean <- map_df(team_mean, team_df_mean) %>%
   ) %>%
   select(-ends_with(".x"), -ends_with(".y"))
 
-write_csv(encontra_df_mean, "data/encontramean.csv")
+write_csv(encontra_df_mean, "data/encontra_mean.csv")
