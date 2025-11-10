@@ -11,7 +11,7 @@ superManager <- read_csv("https://raw.githubusercontent.com/IvoVillanueva/DATOS-
 stats_boxscores <- read_csv("https://raw.githubusercontent.com/IvoVillanueva/pbp-acb-2025-26/refs/heads/main/data/boxscores_2025_26.csv",
   show_col_types = FALSE
 ) %>%
-  rename(fullName = license_licenseStr15) %>%
+  rename(fullName = license_license_str15) %>%
   left_join(superManager, join_by(fullName),
     relationship = "many-to-many"
   ) %>%
